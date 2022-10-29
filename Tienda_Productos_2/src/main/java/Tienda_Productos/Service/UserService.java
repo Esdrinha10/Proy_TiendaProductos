@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Tienda_Productos.InterfaceService.IRepositoryService;
 import Tienda_Productos.Interfaces.IRepository;
 import Tienda_Productos.Models.tbusuarios;
 
+@Service
 public class UserService implements IRepositoryService<tbusuarios> {
 
 	@Autowired
