@@ -1,0 +1,54 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	layout:decorate="~{Layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<br>
+		<br>
+		<br>
+		
+		<div class="container" layout:fragment="content">
+		
+			<form th:action="@{/Save}" th:object="${usuario}" method="post">
+				<div class="card">
+					<div class="card-header">
+						CREATE A NEW USER
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+						    <label for="" class="form-label">Usuario*</label>
+						    <input type="text" th:field="*{Usu_Usuario}" class="form-control">
+					  	</div>
+					    <div class="mb-3">
+						    <label for="" class="form-label">Nombre*</label>
+						    <input type="text" th:field="*{Usu_Nombre}" class="form-control">
+					  	</div>
+					    <div class="mb-3">
+						    <label for="" class="form-label">Apellido*</label>
+						    <input type="text" th:field="*{Usu_Apellidos}" class="form-control">
+					  	</div>
+					  	<div class="mb-3">
+						    <label for="" class="form-label">Contraseña*</label>
+						    <input type="text" th:field="*{Usu_Clave}" class="form-control">
+					  	</div>
+					</div>
+					<div class="card-footer">
+						 <button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</form>
+	   
+	    </div>
+	</div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>

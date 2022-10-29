@@ -7,20 +7,20 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import Tienda_proyecto.Interface.IRepository;
-import Tienda_proyecto.InterfaceService.IRepositoryService;
+import Tienda_proyecto.Interface.IUser;
+import Tienda_proyecto.InterfaceService.IUserService;
 import Tienda_proyecto.Models.tbusuarios;
 
 
 @Service
-public class UserService implements IRepositoryService<tbusuarios> {
+public class UserService implements IUserService {
 
 	@Autowired
-	private IRepository<tbusuarios> data;
+	private IUser _user;
 	
 	@Override
-	public java.util.List<tbusuarios> List() {
-		return (List<tbusuarios>)data.findAll();
+	public List<tbusuarios> List() {
+		return (List<tbusuarios>)_user.findAll();
 	}
 
 	@Override
@@ -31,8 +31,14 @@ public class UserService implements IRepositoryService<tbusuarios> {
 
 	@Override
 	public int Create(tbusuarios data) {
-		// TODO Auto-generated method stub
-		return 0;
+		int response = 0;
+		data.setUsu_Estado((long) 1);
+		data.setUsu_UsuarioCrea((long) 1);
+		tbusuarios user = _user.save(data);
+		if(!user.equals(null)) {
+			response = 1;
+		}
+		return response;
 	}
 
 	@Override
