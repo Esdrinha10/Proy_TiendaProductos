@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -82,6 +84,20 @@ public class tbusuarios {
 		this.Usu_FechaElimina = usu_FechaElimina;
 	}
 
+	@PrePersist
+	public void prePersist() {
+		this.Usu_UsuarioCrea = (long) 1;
+		this.Usu_FechaCreacion = new Date();
+		this.Usu_Estado = (long) 1;
+	}
+	
+	@PreUpdate
+	public void preUpdate() {
+		this.Usu_UsuarioModifica = (long) 1;
+		this.Usu_FechaModifica = new Date();
+	}
+	
+	//GET SETS METHODS
 
 	public Long getUsu_Id() {
 		return Usu_Id;
