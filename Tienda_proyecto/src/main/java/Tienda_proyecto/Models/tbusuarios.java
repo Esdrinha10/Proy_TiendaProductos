@@ -22,7 +22,7 @@ public class tbusuarios {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="usu_id")
-	private Long Usu_Id;
+	private Integer Usu_Id;
 	
 	@Column(name="usu_usuario")
 	private String Usu_Usuario;
@@ -38,25 +38,25 @@ public class tbusuarios {
 	
 	@Column(name="usu_estado")
 	@Value("${Usu_Estado: 1}")
-	private Long Usu_Estado;
+	private Integer Usu_Estado;
 	
 	@Column(name="usu_usuario_crea")
 	@Value("${Usu_UsuarioCrea: 1}")
-	private Long Usu_UsuarioCrea;
+	private Integer Usu_UsuarioCrea;
 	
 	@Column(name="Usu_FechaCreacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date Usu_FechaCreacion;
 	
 	@Column(name="usu_usuario_modifica",nullable = true)
-	private Long Usu_UsuarioModifica;
+	private Integer Usu_UsuarioModifica;
 	
 	@Column(name="usu_fecha_modifica",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date Usu_FechaModifica;
 	
 	@Column(name="usu_usuario_elimina",nullable = true)
-	private Long Usu_UsuarioElimina;
+	private Integer Usu_UsuarioElimina;
 	
 	@Column(name="usu_fecha_elimina",nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -66,9 +66,9 @@ public class tbusuarios {
 		// TODO Auto-generated method stub
 	}
 	
-	public tbusuarios(Long usu_Id, String usu_Usuario, String usu_Clave, String usu_Nombre, String usu_Apellidos,
-			Long usu_Estado, Long usu_UsuarioCrea, Date usu_FechaCreacion, Long usu_UsuarioModifica,
-			Date usu_FechaModifica, Long usu_UsuarioElimina, Date usu_FechaElimina) {
+	public tbusuarios(Integer usu_Id, String usu_Usuario, String usu_Clave, String usu_Nombre, String usu_Apellidos,
+			Integer usu_Estado, Integer usu_UsuarioCrea, Date usu_FechaCreacion, Integer usu_UsuarioModifica,
+			Date usu_FechaModifica, Integer usu_UsuarioElimina, Date usu_FechaElimina) {
 		super();
 		this.Usu_Id = usu_Id;
 		this.Usu_Usuario = usu_Usuario;
@@ -86,25 +86,25 @@ public class tbusuarios {
 
 	@PrePersist
 	public void prePersist() {
-		this.Usu_UsuarioCrea = (long) 1;
+		this.Usu_UsuarioCrea = 1;
 		this.Usu_FechaCreacion = new Date();
-		//this.Usu_Estado = (long) 1;
+		this.Usu_Estado =  1;
 	}
 	
 	@PreUpdate
 	public void preUpdate() {
-		this.Usu_UsuarioModifica = (long) 1;
+		this.Usu_UsuarioModifica = 1;
 		this.Usu_FechaModifica = new Date();
 	}
 	
 	//GET SETS METHODS
 
-	public Long getUsu_Id() {
+	public Integer getUsu_Id() {
 		return Usu_Id;
 	}
 
 
-	public void setUsu_Id(Long usu_Id) {
+	public void setUsu_Id(Integer usu_Id) {
 		Usu_Id = usu_Id;
 	}
 
@@ -149,22 +149,22 @@ public class tbusuarios {
 	}
 
 
-	public Long getUsu_Estado() {
+	public Integer getUsu_Estado() {
 		return Usu_Estado;
 	}
 
 
-	public void setUsu_Estado(Long usu_Estado) {
+	public void setUsu_Estado(Integer usu_Estado) {
 		Usu_Estado = usu_Estado;
 	}
 
 
-	public Long getUsu_UsuarioCrea() {
+	public Integer getUsu_UsuarioCrea() {
 		return Usu_UsuarioCrea;
 	}
 
 
-	public void setUsu_UsuarioCrea(Long usu_UsuarioCrea) {
+	public void setUsu_UsuarioCrea(Integer usu_UsuarioCrea) {
 		Usu_UsuarioCrea = usu_UsuarioCrea;
 	}
 
@@ -179,12 +179,12 @@ public class tbusuarios {
 	}
 
 
-	public Long getUsu_UsuarioModifica() {
+	public Integer getUsu_UsuarioModifica() {
 		return Usu_UsuarioModifica;
 	}
 
 
-	public void setUsu_UsuarioModifica(Long usu_UsuarioModifica) {
+	public void setUsu_UsuarioModifica(Integer usu_UsuarioModifica) {
 		Usu_UsuarioModifica = usu_UsuarioModifica;
 	}
 
@@ -199,12 +199,12 @@ public class tbusuarios {
 	}
 
 
-	public Long getUsu_UsuarioElimina() {
+	public Integer getUsu_UsuarioElimina() {
 		return Usu_UsuarioElimina;
 	}
 
 
-	public void setUsu_UsuarioElimina(Long usu_UsuarioElimina) {
+	public void setUsu_UsuarioElimina(Integer usu_UsuarioElimina) {
 		Usu_UsuarioElimina = usu_UsuarioElimina;
 	}
 

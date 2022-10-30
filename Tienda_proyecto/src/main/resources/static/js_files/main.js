@@ -107,3 +107,94 @@ function sweetAlertconfirm(title = "An error ocurred", message = "", type = "err
         }
     })
 }
+
+
+//---------------------------------- HTTPs HELPERS -----------------------------------------
+
+function FindGetValue(Get_KeyName="") {
+    var Get_KeyValue = null;
+
+    // get url search content after "?" 
+    //example: www.url?get_var=5
+    //return : get_var=5
+    var url_query = location.search.substring(1);
+
+    //split vars and get in array
+    var gets_vars = url_query.split("&");
+
+    for (var i = 0; i < gets_vars.length; i++) {
+        //divide la key from the value in item
+        var var_key = gets_vars[i].split("=");
+
+        // if key is equal to query key return value key
+        if (var_key[0] == Get_KeyName) {
+            //get value key
+            Get_KeyValue = var_key[1];
+            break;
+        }
+    }
+
+    //return value key
+    return Get_KeyValue;
+}
+
+
+function ajaxRequest(url, data = null, method = "GET") {
+
+    var dataResponse = null;
+    var HTTPError = {
+        message: '',
+        code: 0,
+        success: false,
+        data: null
+    }
+    
+    if(data != null){
+		data = JSON.stringify(data);
+	}
+
+    $.ajax({
+        url: url,
+        data: JSON.stringify(data),
+        method: method,
+        dataType: "json",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        async: false,
+        success: function (response) {
+            dataResponse = response;
+        },
+        error: function (jqXHR, exception) {
+            HTTPError.code = jqXHR.status;
+            HTTPError.data = jqXHR;
+            HTTPError.message += "Request http Error: " + url + ", Exception: ";
+
+            // http errors 
+            if (jqXHR.status === 0) {
+                HTTPError.message += 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                HTTPError.message += 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                HTTPError.message += 'Internal Server Error [500].';
+            } else if (jqXHR.status == 401) {
+                HTTPError.message += 'Unauthorized Server Action [401].';
+            }
+
+            // exception errors
+            else if (exception === 'parsererror') {
+                HTTPError.message += 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                HTTPError.message += 'Time out error.';
+            } else if (exception === 'abort') {
+                HTTPError.message += 'Ajax request aborted.';
+            } else {
+                HTTPError.message += jqXHR.responseText;
+            }
+            dataResponse = HTTPError;
+            console.log(HTTPError);
+        }
+    });
+
+    return dataResponse;
+}
