@@ -88,7 +88,7 @@ public class tbusuarios {
 	public void prePersist() {
 		this.Usu_UsuarioCrea = (long) 1;
 		this.Usu_FechaCreacion = new Date();
-		this.Usu_Estado = (long) 1;
+		//this.Usu_Estado = (long) 1;
 	}
 	
 	@PreUpdate

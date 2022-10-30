@@ -34,6 +34,8 @@ public class UserService implements IUserService {
 	@Override
 	public int Create(tbusuarios data) {
 		int response = 0;
+		data.setUsu_Estado((long) 1);
+		data.setUsu_UsuarioCrea((long) 1);
 		tbusuarios user = _user.save(data);
 		if(!user.equals(null)) {
 			response = 1;

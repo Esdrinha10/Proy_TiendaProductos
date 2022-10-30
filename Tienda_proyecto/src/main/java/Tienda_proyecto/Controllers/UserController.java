@@ -35,6 +35,7 @@ public class UserController {
 	@GetMapping("/users/new")
     public String Insert(Model model){
 		model.addAttribute("usuario", new tbusuarios());
+		model.addAttribute("title", "Crear un nuevo usuario");
         return "User_Create";
     }
 	
@@ -42,6 +43,7 @@ public class UserController {
     public String Update(@PathVariable long id,Model model){
 		Optional<tbusuarios> user = _UserService.Find(id);
 		model.addAttribute("usuario", user);
+		model.addAttribute("title", "Editar usuario");
         return "User_Create";
     }
 	
