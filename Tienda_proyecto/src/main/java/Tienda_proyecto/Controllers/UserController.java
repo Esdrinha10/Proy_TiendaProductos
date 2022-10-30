@@ -30,14 +30,14 @@ public class UserController {
     public String Index(Model model){
 		List<tbusuarios> users = _UserService.List();
 		model.addAttribute("usuarios", users);
-        return "User_Index";
+        return "user/User_Index";
     }
 	
 	@GetMapping("/new")
     public String Insert(Model model){
 		model.addAttribute("usuario", new tbusuarios());
 		model.addAttribute("title", "Crear un nuevo usuario");
-        return "User_Create";
+        return "user/User_Create";
     }
 	
 	@GetMapping("/edit/{id}")
@@ -45,7 +45,7 @@ public class UserController {
 		Optional<tbusuarios> user = _UserService.Find(id);
 		model.addAttribute("usuario", user);
 		model.addAttribute("title", "Editar usuario");
-        return "User_Create";
+        return "user/User_Create";
     }
 	
 	@GetMapping("/delete/{id}")
