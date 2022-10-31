@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PROYECTO DE VENTAS - JAVA/SPRING</title>
+    <title>TIENDA DE PRODCUTOS</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
@@ -73,11 +73,10 @@
                <li class="nav-header">
                     <div class="dropdown profile-element">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-                            <span class="block m-t-xs font-bold">Nombre de usuario</span>
-                            <span class="text-muted text-xs block">menu <b class="caret"></b></span>
+                            <span class="block m-t-xs font-bold">TIENDA DE PRODUCTOS</span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs" x-placement="bottom-start" style="position: absolute; top: 39px; left: 0px; will-change: top, left;">
-                            <li><a class="dropdown-item" th:href="@{/login}">Logout</a></li>
+                            <li><a class="dropdown-item" th:href="@{/login}">Cerrar Sesión</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -94,7 +93,7 @@
                     <a th:href="@{/categories/index}"><span class="nav-label">Categorias</span></a>
                 </li>
                 <li class="">
-                    <a th:href="@{/login}"><i class="fa fa-database"></i> <span class="nav-label">Cerrar sesion</span></a>
+                    <a th:href="@{/login}"><span class="nav-label">Cerrar sesión</span></a>
                 </li>
             </ul>
 
@@ -110,7 +109,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li>
                     <a th:href="@{/login}">
-                        <i class="fa fa-sign-out"></i> Log out
+                        <i class="fa fa-sign-out"></i> Cerrar Sesión
                     </a>
                 </li>
             </ul>

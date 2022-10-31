@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Login</title>
+    <title>TIENDA | Login</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -21,11 +21,10 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
-
-                <h1 class="logo-name">JAVA</h1>
-
+                <h1 class="logo-name">BAC</h1>
+			
             </div>
-            <h3>Bienvenido a JAVA APP</h3>
+            <h3>Bienvenido</h3>
             <form class="m-t" th:action="@{/StartSesion}" th:object="${usuario}"  method="post" id="frmLogIn">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Usuario" required="" th:field="*{Usu_Usuario}">
@@ -33,7 +32,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Contraseña" required="" th:field="*{Usu_Clave}">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b" style="color: white;">Iniciar sesion</button>
+                <button type="submit" class="btn btn-primary block full-width m-b" style="color: white;">Iniciar sesión</button>
             </form>
         </div>
     </div>
