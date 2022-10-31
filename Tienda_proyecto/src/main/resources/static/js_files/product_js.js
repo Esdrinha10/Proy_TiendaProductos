@@ -44,3 +44,14 @@ function createProduct(){
 		$("#frmCreateProduct").submit();
 	}
 }
+
+function deleteProduct(id){
+	sweetAlertconfirm(
+		title = "Estas Seguro?", 
+		message = "Se eliminara este registro de forma permanente", 
+		type = "warning", 
+		successfunction = () => { 
+			location.assign(`/products/delete/${id}`);
+		}
+	);
+}

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import Tienda_proyecto.Interface.IUser;
 import Tienda_proyecto.InterfaceService.IService;
+import Tienda_proyecto.Models.tbproductos;
 import Tienda_proyecto.Models.tbusuarios;
 
 
@@ -59,11 +60,21 @@ public class UserService implements IService<tbusuarios,Integer>  {
 		return 0;
 	}
 
-
 	@Override
 	public int Update(tbusuarios data) {
-		// TODO Auto-generated method stub
-		return 0;
+		int response = 0;
+		tbusuarios actualUser = this.Find(data.getUsu_Id()).get();
+		
+		data.setUsu_FechaCreacion(actualUser.getUsu_FechaCreacion());
+		data.setUsu_UsuarioCrea(actualUser.getUsu_UsuarioCrea());
+		data.setUsu_Estado(actualUser.getUsu_Estado());
+		
+		tbusuarios state = _user.save(data);
+		if(!state.equals(null)) {
+			response = 1;
+		}
+		return response;
+		
 	}
 
 	

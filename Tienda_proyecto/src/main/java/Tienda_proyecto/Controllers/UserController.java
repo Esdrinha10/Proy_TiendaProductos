@@ -37,6 +37,7 @@ public class UserController {
     public String Insert(Model model){
 		model.addAttribute("usuario", new tbusuarios());
 		model.addAttribute("title", "Crear un nuevo usuario");
+		model.addAttribute("target", "/users/save");
         return "user/User_Create";
     }
 	
@@ -45,19 +46,26 @@ public class UserController {
 		Optional<tbusuarios> user = _UserService.Find(id);
 		model.addAttribute("usuario", user);
 		model.addAttribute("title", "Editar usuario");
+		model.addAttribute("target", "/users/update");
         return "user/User_Create";
     }
 	
 	@GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id,Model model){
 		_UserService.DeleteLogic(id, 1);
-		return "redirect:/users/index";
+		return "redirect:/users/index?successDelete=true";
     }
 	
-	@PostMapping("/Save")
+	@PostMapping("/save")
     public String Save(@Validated tbusuarios data,Model model){
     	_UserService.Create(data);
-        return "redirect:/users/index";
+    	return "redirect:/users/index?successCreate=true";
+    }
+	
+	@PostMapping("/update")
+    public String Update(@Validated tbusuarios data,Model model){
+    	_UserService.Update(data);
+    	return "redirect:/users/index?successUpdate=true";
     }
 
 	

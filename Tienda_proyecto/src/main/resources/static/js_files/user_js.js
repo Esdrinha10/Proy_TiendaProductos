@@ -1,3 +1,30 @@
+// ----------------------------- SUCCESS VALIDATION ---------------------------------------------
+
+if(FindGetValue("successCreate") != null){
+	 Swal.fire('!Registro creado con exito!','','success')
+	 .then((result) => {
+	 	location.assign(`/users/index`);
+	 });
+}
+
+if(FindGetValue("successUpdate") != null){
+	 Swal.fire('!Registro actualizado con exito!','','success')
+	 .then((result) => {
+	 	location.assign(`/users/index`);
+	 });
+}
+
+if(FindGetValue("successDelete") != null){
+	 Swal.fire('!Registro eliminado con exito!','','success')
+	 .then((result) => {
+	 	location.assign(`/users/index`);
+	 });
+}
+
+
+
+// ----------------------------- CRUD METHODS ---------------------------------------------
+
 
 function deleteUser(id){
 	sweetAlertconfirm(

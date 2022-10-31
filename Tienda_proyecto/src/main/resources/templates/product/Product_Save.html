@@ -20,7 +20,7 @@
 	            <div class="ui icon attached message">
 	                <i class="icon box"></i>
 	                <div class="content">
-	                    <div class="header" th:text="${title}"></div>
+	                    <div class="header" th:text="${tittle}"></div>
 	                </div>
 	                <div class="right floated content" style="text-align: end;">
 	                    <a class="ui left icon button" th:href="@{/products/index}">
@@ -30,7 +30,7 @@
 	            </div>
 	
 	            <!-- formulario-->
-	            <form th:action="@{/products/save}" th:object="${producto}" method="post" id="frmCreateProduct">
+	            <form th:action="${target}" th:object="${producto}" method="post" id="frmCreateProduct">
 	
 	                <div class="ui form attached fluid segment">
 	                    <div class="content">
