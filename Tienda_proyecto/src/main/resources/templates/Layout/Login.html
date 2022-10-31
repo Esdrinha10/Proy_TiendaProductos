@@ -22,28 +22,19 @@
         <div>
             <div>
 
-                <h1 class="logo-name">IN+</h1>
+                <h1 class="logo-name">JAVA</h1>
 
             </div>
-            <h3>Welcome to IN+</h3>
-            <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
-                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
-            </p>
-            <p>Login in. To see it in action.</p>
-            <form class="m-t" role="form" action="index.html">
+            <h3>Bienvenido a JAVA APP</h3>
+            <form class="m-t" th:action="@{/StartSesion}" th:object="${usuario}"  method="post" id="frmLogIn">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="puto" required="">
+                    <input type="text" class="form-control" placeholder="Usuario" required="" th:field="*{Usu_Usuario}">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" class="form-control" placeholder="Contraseña" required="" th:field="*{Usu_Clave}">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
-
-                <a href="#"><small>Forgot password?</small></a>
-                <p class="text-muted text-center"><small>Do not have an account?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+                <button type="submit" class="btn btn-primary block full-width m-b" style="color: white;">Iniciar sesion</button>
             </form>
-            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
         </div>
     </div>
 
@@ -51,6 +42,16 @@
     <script th:src="@{js/jquery-3.1.1.min.js}"></script>
     <script th:src="@{js/popper.min.js}"></script>
     <script th:src="@{js/bootstrap.js}"></script>
+    <script th:src="@{js_files/main.js}"></script>
+    
+    <script>
+    	if(FindGetValue("error") != null){
+			 $("#frmLogIn").append(
+				 `<div class="alert alert-danger">Usuario o contraseña incorrecta</div>`
+			 );
+		}
+    	
+    </script>
 
 </body>
 
