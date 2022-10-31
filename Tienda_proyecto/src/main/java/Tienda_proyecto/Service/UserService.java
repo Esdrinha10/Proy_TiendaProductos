@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Tienda_proyecto.Interface.IUser;
+import Tienda_proyecto.InterfaceService.IEncryptPassword;
 import Tienda_proyecto.InterfaceService.IService;
 import Tienda_proyecto.Models.tbproductos;
 import Tienda_proyecto.Models.tbusuarios;
@@ -19,6 +20,9 @@ public class UserService implements IService<tbusuarios,Integer>  {
 
 	@Autowired
 	private IUser _user;
+	
+	@Autowired
+	private IEncryptPassword _IEncryptPassword;
 	
 	@Override
 	public List<tbusuarios> List() {
@@ -37,6 +41,9 @@ public class UserService implements IService<tbusuarios,Integer>  {
 	@Override
 	public int Create(tbusuarios data) {
 		int response = 0;
+		data.setUsu_Clave( 
+			_IEncryptPassword.EncryptPassword(data.getUsu_Clave()) 
+		);
 		tbusuarios user = _user.save(data);
 		if(!user.equals(null)) {
 			response = 1;
