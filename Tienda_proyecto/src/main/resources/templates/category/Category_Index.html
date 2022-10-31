@@ -47,7 +47,7 @@
 		                <tr th:each="categoria:${categorias}">
 		                    <td th:text="${categoria.Cat_Descripcion}"></td>
 		                    <td>
-		                        <a th:onclick="editCategory([[${categoria.Cat_Id}]])" class="ui icon green button">
+		                        <a th:onclick="editCategory([[${categoria.Cat_Id}]])" class="ui icon btn-edit button">
 		                        	  <i class="pencil alternate icon"></i>
 		                        </a>
 		                        <a th:onclick="deleteCategory([[${categoria.Cat_Id}]])" class="ui icon button">
@@ -83,8 +83,8 @@
 				</form>
 			</div>
 		    <div class="actions">
-		    	<a class="ui black deny button">Cancelar</a>
-		    	<a class="ui positive right labeled icon button" id="btnSave">
+		    	<a class="ui deny button">Cancelar</a>
+		    	<a class="ui btn-primary icon button" id="btnSave">
 		      		Guardar <i class="checkmark icon"></i>
 		    	</a>
 		    </div>

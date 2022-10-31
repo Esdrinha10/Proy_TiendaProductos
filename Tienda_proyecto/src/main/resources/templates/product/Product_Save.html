@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/Layout" 
+	layout:decorate="~{Layout/Layout}">
+<head th:replace="Layout/Layout :: head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATE PRODUCT</title>
+</head>
+<body>
+
+	<div layout:fragment="page-content">
+		<br>
+		<br>
+		<br>
+		
+	    <div class="container card">
+	        <div class="ui basic segment">
+	        
+	            <div class="ui icon attached message">
+	                <i class="icon box"></i>
+	                <div class="content">
+	                    <div class="header" th:text="${title}"></div>
+	                </div>
+	                <div class="right floated content" style="text-align: end;">
+	                    <a class="ui left icon button" th:href="@{/products/index}">
+	                        Regresar
+	                    </a>
+	                </div>
+	            </div>
+	
+	            <!-- formulario-->
+	            <form th:action="@{/products/save}" th:object="${producto}" method="post" id="frmCreateProduct">
+	
+	                <div class="ui form attached fluid segment">
+	                    <div class="content">
+	  						
+	  						<input type="text" th:field="*{Pro_Id}" class="form-control" hidden>
+                            
+                            <div class="two fields">
+                                <div class="required field">
+                                    <label class="ui label">Nombre de producto</label>
+                                    <input type="text" th:field="*{Pro_Descripcion}">
+                                </div>
+                                <div class="required field">
+                                    <label class="ui label">Categoria</label>
+                                     <select th:field="*{Cat_Id}" class="ui dropdown search">
+                                     	<option value="">Seleccione una categoria</option>
+                                     	<th:block th:each="categoria:${categorias}">
+                                     		<option th:text="${categoria.Cat_Descripcion}" th:value="${categoria.Cat_Id}"></option>
+                                     	</th:block>
+                                     </select>
+                                </div>
+                            </div>
+                            
+                            <div class="two fields">
+                                 <div class="required field">
+                                    <label class="ui label">Precio de compra</label>
+                                     <input type="number" th:field="*{Pro_Precio_Compra}">
+                                </div>
+                                 <div class="required field">
+                                    <label class="ui label">Precio de venta</label>
+                                     <input type="number" th:field="*{Pro_Precio_Venta}">
+                                </div>
+                            </div>
+	                       
+	                        <input type="button" value="Guardar" onclick="createProduct()" class="btn-primary ui button" />
+	                        <a th:href="@{/products/index}" class="ui button mb-3 ms-3">Cancelar</a>
+	                    </div>
+	                </div>
+	
+	            </form>
+	            <!-- fin formulario-->
+	        </div>
+	    </div>
+	 </div>
+
+    
+    <th:block layout:fragment="scripts">
+     	<script th:src="@{/js_files/product_js.js}" type="text/javascript"></script>
+	</th:block>
+</body>
+</html>

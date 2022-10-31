@@ -84,6 +84,9 @@ public class tbusuarios {
 		this.Usu_FechaElimina = usu_FechaElimina;
 	}
 
+	
+	// EVENTS
+	
 	@PrePersist
 	public void prePersist() {
 		this.Usu_UsuarioCrea = 1;

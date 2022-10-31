@@ -39,6 +39,20 @@
 		    bottom: unset !important;
 		    right: unset !important;
         }
+        
+        .btn-edit {
+		  color: #FFFFFF !important;
+		  background-color: #1075bb !important;
+		  border-color: #1075bb !important;
+		}
+		
+		.btn-edit:hover,
+		.btn-edit:focus,
+		.btn-edit.focus {
+		  background-color: #1075bb !important;
+		  border-color: #1075bb !important;
+		  color: #FFFFFF !important;
+		}
     </style>
 
 </head>
@@ -74,7 +88,7 @@
                     <a th:href="@{/users/index}"><span class="nav-label">Usuarios</span></a>
                 </li>
                 <li>
-                    <a th:href="@{/productos/index}"><span class="nav-label">Productos</span></a>
+                    <a th:href="@{/products/index}"><span class="nav-label">Productos</span></a>
                 </li>
                 <li>
                     <a th:href="@{/categories/index}"><span class="nav-label">Categorias</span></a>

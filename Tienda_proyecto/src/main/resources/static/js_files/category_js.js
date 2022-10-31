@@ -26,6 +26,8 @@ if(FindGetValue("successDelete") != null){
 
 $("#btnCreateCategory").click(function(){
 	$("#mdlSaveCategory").modal("show");
+	$("#mdlSaveCategory #Cat_Id").val("");
+	$("#mdlSaveCategory #Cat_Descripcion").val("");
 	$("#mdlSaveCategory #tittle").html("Crear categoria");
 	$("#frmSaveCategory").prop("action","/categories/save");
 });
