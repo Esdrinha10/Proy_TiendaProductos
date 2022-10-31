@@ -71,7 +71,10 @@ public class UserService implements IService<tbusuarios,Integer>  {
 	public int Update(tbusuarios data) {
 		int response = 0;
 		tbusuarios actualUser = this.Find(data.getUsu_Id()).get();
-		data.setUsu_Clave(actualUser.getUsu_Clave());
+		data.setUsu_Clave( 
+			_IEncryptPassword.EncryptPassword(data.getUsu_Clave()) 
+		);
+		//data.setUsu_Clave(actualUser.getUsu_Clave());
 		data.setUsu_FechaCreacion(actualUser.getUsu_FechaCreacion());
 		data.setUsu_UsuarioCrea(actualUser.getUsu_UsuarioCrea());
 		data.setUsu_Estado(actualUser.getUsu_Estado());
